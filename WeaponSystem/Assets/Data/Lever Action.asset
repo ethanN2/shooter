@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d1b671a7a249f5aeeafe9cd0ecdbf8, type: 3}
+  m_Name: Lever Action
+  m_EditorClassIdentifier: 
+  _id: S_Lever_Action
+  _name: Lever Action
+  _description: Shotguns
+  _damage: 22
+  _type: 2
+  _fireRate: 4
+  _bulletFire: 1
+  _magazineSize: 2
+  _maxAmmo: 24
+  _reloadTime: 2
