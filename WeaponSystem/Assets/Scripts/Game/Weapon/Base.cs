@@ -4,12 +4,12 @@ using UnityEngine;
 namespace Game.Weapon
 {
     [AddComponentMenu("Gun/Base")]
-    public abstract class Base : MonoBehaviour, IInitializable
+    public abstract class Base : MonoBehaviour, IInitializable, IWeapon
     {
-        [SerializeField] protected BaseWeapon weaponData;
+        [SerializeField] protected BaseWeaponData weaponData;
 
         public bool       IsInitialized { get; protected set; }
-        public BaseWeapon WeaponData    => weaponData;
+        public BaseWeaponData WeaponData    => weaponData;
 
         public virtual void Initialize()
         {
@@ -17,5 +17,7 @@ namespace Game.Weapon
             gameObject.SetActive(true);
             IsInitialized = true;
         }
+
+        public abstract void UpdateWeapon(Player owner, float deltaTime);
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Items.FireWeapons
 {
     [CreateAssetMenu(fileName = "Gun", menuName = "Weapon/Gun")]
-    public class Gun : BaseWeapon
+    public class GunData : BaseWeaponData
     {
         [SerializeField] protected float _fireRate;
         [SerializeField] protected int   _bulletFire;

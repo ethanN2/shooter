@@ -28,16 +28,13 @@ namespace Game.Weapon.Gun
 
         public override void Initialize()
         {
-            var gunData = (Items.FireWeapons.Gun)weaponData;
+            var gunData = (Items.FireWeapons.GunData)weaponData;
             _currentMagazine = gunData.MagazineSize;
             _currentAmmo     = gunData.MaxAmmo - gunData.MagazineSize;
             base.Initialize();
         }
 
-        public void UpdateWeapon(Player owner, float deltaTime)
-        {
-            
-        }
+        public override void UpdateWeapon(Player owner, float deltaTime) { }
 
         public void Reload()
         {
@@ -61,7 +58,7 @@ namespace Game.Weapon.Gun
 
         private IEnumerator Firing()
         {
-            var gunData = (Items.FireWeapons.Gun)weaponData;
+            var gunData = (Items.FireWeapons.GunData)weaponData;
             yield return new WaitForSeconds(gunData.FireRate);
             Debug.Log($"{gunData.Name} type {gunData.WeaponType} Fire!");
             _currentMagazine--;
@@ -70,14 +67,14 @@ namespace Game.Weapon.Gun
 
         protected virtual IEnumerator Reloading()
         {
-            if (weaponData is not Items.FireWeapons.Gun gunData) yield break;
+            if (weaponData is not Items.FireWeapons.GunData gunData) yield break;
             yield return new WaitForSeconds(gunData.ReloadTime);
             Debug.Log($"{gunData.Name} type {gunData.WeaponType} Reloaded!");
             AdjustAmmoAfterReload(gunData);
             _currentCoroutine = null;
         }
 
-        private void AdjustAmmoAfterReload(Items.FireWeapons.Gun gunData)
+        private void AdjustAmmoAfterReload(Items.FireWeapons.GunData gunData)
         {
             var delta = _currentAmmo - gunData.MagazineSize;
             _currentAmmo     = delta > 0 ? delta : 0;

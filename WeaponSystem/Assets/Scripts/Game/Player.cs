@@ -14,8 +14,8 @@ namespace Game
     {
         #region Fields
 
-        [SerializeField] private TMP_Dropdown     _dropdownUI;
-        [SerializeField] private List<BaseWeapon> _inventory;
+        [SerializeField] private TMP_Dropdown         _dropdownUI;
+        [SerializeField] private List<BaseWeaponData> _inventory;
 
         #endregion
 
@@ -41,14 +41,9 @@ namespace Game
                 yield return null;
             }
 
-            var optionDatas = new List<TMP_Dropdown.OptionData>();
-            foreach (var weapon in _inventory)
-            {
-                optionDatas.Add(new TMP_Dropdown.OptionData(weapon.Name));
-            }
-
-            _dropdownUI.AddOptions(optionDatas);
-            ChangeGun(0);
+            InitInventory();
+            if (_inventory.Count > 0)
+                ChangeGun(0);
         }
 
         // These functions will be called when the attached GameObject is enabled.
@@ -161,6 +156,17 @@ namespace Game
             {
                 Debug.Log(CurrentWeapon.name + " is not reloadable.");
             }
+        }
+
+        private void InitInventory()
+        {
+            var optionDatas = new List<TMP_Dropdown.OptionData>();
+            foreach (var weapon in _inventory)
+            {
+                optionDatas.Add(new TMP_Dropdown.OptionData(weapon.Name));
+            }
+
+            _dropdownUI.AddOptions(optionDatas);
         }
 
         #endregion

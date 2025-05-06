@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Items
 {
-    public abstract class BaseWeapon : ScriptableObject, IIdentity, IInfo, IWeapon
+    public abstract class BaseWeaponData : ScriptableObject, IIdentity, IInfo, IWeapon
     {
         #region Variables
 

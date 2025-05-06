@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Items.FireWeapons
 {
     [CreateAssetMenu(fileName = "Gun", menuName = "Weapon/Laser")]
-    public class Laser : BaseWeapon
+    public class LaserData : BaseWeaponData
     {
         [SerializeField]
         protected int _maxEnergy;

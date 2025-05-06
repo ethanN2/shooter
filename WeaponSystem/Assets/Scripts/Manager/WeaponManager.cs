@@ -35,6 +35,8 @@ namespace Manager
         {
             if (_instance != null && _instance != this)
             {
+                Debug.LogWarning("Duplicate WeaponManager instance found. Destroying duplicate.", gameObject);
+                Destroy(gameObject); // Destroy this duplicate GameObject
                 return;
             }
 
@@ -55,6 +57,7 @@ namespace Manager
                 obj.gameObject.SetActive(false);
                 _weaponInstances.Add(obj);
             }
+
             IsInit = true;
         }
 
@@ -101,7 +104,7 @@ namespace Manager
 
             return null;
         }
-        
+
         public void ReturnWeapon(GameObject weapon)
         {
             weapon.transform.SetParent(transform);

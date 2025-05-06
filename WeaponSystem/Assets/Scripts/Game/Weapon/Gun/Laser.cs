@@ -27,13 +27,13 @@ namespace Game.Weapon.Gun
 
         public override void Initialize()
         {
-            var gunData = (Items.FireWeapons.Laser)weaponData;
+            var gunData = (Items.FireWeapons.LaserData)weaponData;
             _currentEnergy = gunData.MaxEnergy;
             _currentHeat   = 0;
             base.Initialize();
         }
 
-        public void UpdateWeapon(Player owner, float deltaTime)
+        public override void UpdateWeapon(Player owner, float deltaTime)
         {
             if (_heatReduceTimeRemain > 0)
             {
@@ -43,7 +43,7 @@ namespace Game.Weapon.Gun
 
             if (_currentHeat <= 0) return;
 
-            var gunData = (Items.FireWeapons.Laser)weaponData;
+            var gunData = (Items.FireWeapons.LaserData)weaponData;
             _currentHeat = Mathf.Clamp(_currentHeat - deltaTime * 10, 0, gunData.MaxOverHeat);
         }
 
@@ -60,7 +60,7 @@ namespace Game.Weapon.Gun
 
         private IEnumerator Reloading()
         {
-            var gunData = (Items.FireWeapons.Laser)weaponData;
+            var gunData = (Items.FireWeapons.LaserData)weaponData;
             IsReloading = true;
             yield return new WaitForSeconds(gunData.ChargeTime);
             Debug.Log($"{gunData.Name} type {gunData.WeaponType} Reloaded!");
@@ -70,7 +70,7 @@ namespace Game.Weapon.Gun
 
         public void Fire()
         {
-            var gunData = (Items.FireWeapons.Laser)weaponData;
+            var gunData = (Items.FireWeapons.LaserData)weaponData;
             if (_currentHeat >= gunData.MaxOverHeat)
             {
                 Debug.Log($"{gunData.Name} type {gunData.WeaponType} Heat!");
